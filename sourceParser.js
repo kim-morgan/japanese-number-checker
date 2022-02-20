@@ -17,25 +17,35 @@ class SourceParser {
   }
 
   extractNumericalInformation = () => {
-    console.log(this.rawNumbers)
     for (const number of this.rawNumbers) {
       let indexOfNumber = this.rawString.indexOf(number);
-      let indexBefore;
-      if (indexOfNumber === 0) {
-        indexBefore = 0;
-      } else if (indexOfNumber === 1) {
-        indexBefore = 1;
-      } else {
-        indexBefore = 2;
-      }
-      let textBeforeNumber = this.rawString.substr(indexOfNumber - indexBefore, indexBefore);
-      let textAfterNumber = this.rawString.substr(indexOfNumber+1, 1);
+      let indexBefore = this.indexOfPrecedingCharsToCheck(indexOfNumber);
+      let textBeforeNumber = this.getTextBeforeNumber(indexOfNumber, indexBefore);
+      let textAfterNumber = this.getTextAfterNumber(indexOfNumber);
       let numericalInformation = [textBeforeNumber, number, textAfterNumber];
-      this.rawString = this.rawString.replace(number, "")
       numericalInformation = numericalInformation.map(character => this.getRelevantNumber(character)).join("");
       this.processedNumbers.push(numericalInformation);
+      this.rawString = this.rawString.replace(number, "");
     }
     return this.processedNumbers;
+  }
+
+  indexOfPrecedingCharsToCheck = (indexOfNumber) => {
+    if (indexOfNumber === 0) {
+      return 0;
+    } else if (indexOfNumber === 1) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
+
+  getTextBeforeNumber = (indexOfNumber, indexBefore) => {
+    return this.rawString.substr(indexOfNumber - indexBefore, indexBefore);
+  }
+
+  getTextAfterNumber = (indexOfNumber) => {
+    return this.rawString.substr(indexOfNumber + 1, 1);
   }
 
   getRelevantNumber = (substring) => {
