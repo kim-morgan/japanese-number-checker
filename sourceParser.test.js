@@ -9,7 +9,7 @@ describe("Checker", () => {
   });
 
   it("should be able to extract relevant numerical information", () => {
-    expect(sourceParser.extractNumericalInformation()).toEqual(["第１", "一億"]);
+    expect(sourceParser.extractNumericalInformation()).toEqual(["第1", "1億"]);
   });
 
 })
