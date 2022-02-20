@@ -1,6 +1,6 @@
 const SourceParser = require("./sourceParser")
 
-let sourceParser = new SourceParser("第1四半期に1億円稼ぎました");
+let sourceParser = new SourceParser("第1四半期に10億円稼ぎました");
 
 describe("Checker", () => {
 
@@ -22,6 +22,10 @@ describe("Checker", () => {
     let sourceParserEnd = new SourceParser("安全第1");
     sourceParserEnd.extractNumbers();
     expect(sourceParserEnd.extractNumericalInformation()).toEqual(["第1"]);
-  })
+  });
+
+  it("should accept input with full-width numbers", () => {
+    let sourceParserFullWidth = new SourceParser("第１四半期に１億円稼ぎました")
+  });
 
 });
