@@ -1,7 +1,7 @@
 class Checker {
 
-  extractNumbers = () => {
-    return 1;
+  extractNumbers = (string) => {
+    return string.replace(/\D/g,' ').split(" ").filter(word => word !== "")
   }
 
 }
