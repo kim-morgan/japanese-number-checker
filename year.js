@@ -1,5 +1,6 @@
 // The first year of each era
 const years = {
+  "明治": 1868,
   "大正": 1912,
   "昭和": 1926,
   "平成": 1989,
