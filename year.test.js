@@ -6,6 +6,8 @@ let showaThirty = new Year("昭和", 30);
 
 let reiwaFour = new Year("令和", 4);
 
+let taishoThree = new Year("大正", 3);
+
 describe("Year", () => {
   it("should be able to convert heisei years to western years", () => {
     expect(heiseiThree.getAcceptableOutput()).toEqual(1991);
@@ -17,5 +19,9 @@ describe("Year", () => {
 
   it("should be able to convert reiwa years to western years", () => {
     expect(reiwaFour.getAcceptableOutput()).toEqual(2022);
+  });
+
+  it("should be abelt ot convert taisho years to western years", () => {
+    expect(taishoThree.getAcceptableOutput()).toEqual(1914);
   })
 });
