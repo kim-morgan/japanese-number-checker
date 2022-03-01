@@ -1,9 +1,18 @@
+// The first year of each era
+const years = {
+  "昭和": 1926,
+  "平成": 1989,
+  "令和": 2019,
+}
 class Year {
 
   constructor(yearType, number) {
     this.yearType = yearType;
     this.number = number;
-    this.acceptableOutput = 1991;
+  }
+
+  getAcceptableOutput = () => {
+    return years[this.yearType] + this.number - 1;
   }
 
 }
