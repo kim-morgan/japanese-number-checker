@@ -12,6 +12,7 @@ let september = new Month(9);
 let october = new Month(10);
 let november = new Month(11);
 let december = new Month(12);
+let invalidMonth = new Month(134);
 
 describe("Month", () => {
   it("can convert January to English", () => {
@@ -61,4 +62,8 @@ describe("Month", () => {
   it("can convert December to English", () => {
     expect(december.getAcceptableOutput()).toEqual("Dec");
   });
+
+  it("returns an empty string for invalid input", () => {
+    expect(invalidMonth.getAcceptableOutput()).toEqual("");
+  })
 });

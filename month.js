@@ -20,7 +20,11 @@ class Month {
   }
 
   getAcceptableOutput = () => {
-    return months[this.month];
+    if (this.month > 0 && this.month <= 12) {
+      return months[this.month];
+    } else {
+      return "";
+    }
   }
 
 }
